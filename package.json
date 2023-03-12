@@ -72,6 +72,7 @@
     "eslint": "^8.35.0",
     "install": "^0.13.0",
     "react-scripts": "^5.0.1",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dts": "^5.2.0",
     "rollup-plugin-sass": "^1.12.19",
     "semantic-release": "^20.1.1",

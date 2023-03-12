@@ -11,11 +11,6 @@ const anims = {
 
 export interface AnimContainerProps {
   anim: keyof typeof anims
-  /**
-   * children prop
-   * (this comment is required for the storybook children option to render ¯\ (ツ) /¯)
-   * see: https://github.com/storybookjs/storybook/issues/9921#issuecomment-655436418
-   */
   children: ReactElement
   delay?: number
   freezeAtFinalFrame?: boolean
@@ -45,7 +40,7 @@ const AnimContainer: FC<AnimContainerProps> = ({
       data-testid="anim-container"
       style={style}
     >
-      {children}
+      {children ?? "PlaceHolder"}
     </div>
   )
 }

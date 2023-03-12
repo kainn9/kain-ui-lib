@@ -6,6 +6,7 @@ import { terser } from "rollup-plugin-terser"
 import image from "@rollup/plugin-image"
 import dts from "rollup-plugin-dts"
 import sass from "rollup-plugin-sass"
+import copy from "rollup-plugin-copy"
 
 export default [
   {
@@ -23,6 +24,11 @@ export default [
       }
     ],
     plugins: [
+      copy({
+        targets: [
+          { src: "src/scssVars/colors", dest: "dist/scssVars", flatten: false }
+        ]
+      }),
       sass({
         output: "dist/ui_styles.css"
       }),
