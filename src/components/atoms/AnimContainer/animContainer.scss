@@ -1,0 +1,91 @@
+.anim-container__reveal-from-left {
+  animation-duration: 2s;
+  animation-name: reveal-from-left;
+}
+
+.anim-container__reveal-from-right {
+  animation-duration: 2s;
+  animation-name: reveal-from-right;
+  
+}
+
+
+.anim-container__reveal-from-top {
+  animation-duration: 2s;
+  animation-name: reveal-from-top;
+
+}
+
+
+.anim-container__reveal-from-bottom {
+  animation-duration: 2s;
+  animation-name: reveal-from-bottom;
+}
+
+
+
+
+@keyframes reveal-from-top {
+  0% {
+    opacity: 0%;
+    transform: translate(0px, -100px);
+  }
+
+  80% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes reveal-from-bottom {
+  0% {
+    opacity: 0%;
+    transform: translate(0px, 100px);
+  }
+
+  80% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}
+
+
+@keyframes reveal-from-right {
+  0% {
+    opacity: 0%;
+    transform: translate(100px, 0px);
+  }
+
+  80% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes reveal-from-left {
+  0% {
+    opacity: 0%;
+    transform: translate(-100px, 0px);
+  }
+
+  80% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}

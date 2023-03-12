@@ -1,0 +1,51 @@
+name: deploy and release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Build Storybook
+        run: yarn install && yarn run build-storybook
+      - name: Deploy Storybook to S3 bucket
+        run: aws s3 sync ./storybook-static/ s3://${{ vars.S3_BUCKET }} --delete
+
+  release:
+    needs: deploy
+    name: Publish Package / GitHub release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+      - name: Install
+        env:
+          CI: true
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Build
+        if: success()
+        run: yarn run build
+      - name: Semantic Release
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.PAT }}
+        run: npx semantic-release
+
