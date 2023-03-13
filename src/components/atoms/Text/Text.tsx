@@ -20,7 +20,8 @@ interface TextProps {
 const fonts = {
   georgia: "Georgia, 'Times New Roman', Times, serif",
   sans: "sans-serif",
-  roboto: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"
+  roboto: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+  mono: "OCR A Std, monospace"
 }
 
 const sizes = {
