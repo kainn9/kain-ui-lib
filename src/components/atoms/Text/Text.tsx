@@ -47,7 +47,7 @@ const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, chil
   const style = {
     color: selectedThemeColor ?? color,
     fontFamily: fonts[font],
-    fontSize: sizes[size ?? "sm"]
+    fontSize: `clamp(14px, ${sizes[size ?? "sm"]}px, 10vw)`
   }
 
   return (
