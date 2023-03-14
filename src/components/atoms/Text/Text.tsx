@@ -15,6 +15,7 @@ interface TextProps {
    */
   children: string
   headingLevel?: number
+  customStyles?: Record<string, string>
 }
 
 const fonts = {
@@ -37,7 +38,7 @@ const sizes = {
   traeYoungNotValidInDyckman: 150
 }
 
-const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, children }) => {
+const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, customStyles, children }) => {
   const selectedThemeColor = getFromScscModule(colors, themeColor as string)
 
   const Tag = headingLevel !== undefined && headingLevel !== null && headingLevel > 0 && headingLevel < 4
@@ -47,13 +48,13 @@ const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, chil
   const style = {
     color: selectedThemeColor ?? color,
     fontFamily: fonts[font],
-    fontSize: `clamp(14px, ${sizes[size ?? "sm"]}px, 10vw)`
+    fontSize: size !== undefined && size !== null ? (`clamp(14px, ${sizes[size ?? "sm"]}px, 10vw)`) : "14px"
   }
 
   return (
     <Tag
       className="kain-ui-text"
-      style={style}
+      style={{ ...style, ...customStyles }}
       data-testid="kain-ui-text"
     >
       {

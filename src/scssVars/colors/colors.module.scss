@@ -1,11 +1,15 @@
 
 $purple-light: #8a04ed;
 $purple-dark: #570296;
-$purple-darker: #240c76;
+$purple-darker: #12063b;
 $purple-darkest: #0b0423;
 $pink: #ef9af2;
 $magenta: #831187;
 $black: #0c0c0c;
+$retro-teal: #26d8ff;
+$purple-lightest: #ab81cb;
+$white-pink: #fae1fb;
+
 
 
 :export {
@@ -16,4 +20,7 @@ $black: #0c0c0c;
   pink: $pink;
   magenta: $magenta;
   black: $black;
+  retro-teal: $retro-teal;
+  white-pink: $white-pink;
+  purple-lightest: $purple-lightest;
 }

@@ -62,7 +62,7 @@ func addComponentTypeLevelExport(filePath string, componentName string) {
 
 	defer file.Close()
 
-	content := "export * from " + "\"" + "./" + componentName + "\"" + "\n\n"
+	content := "export * from " + "\"" + "./" + componentName + "\"" + "\n"
 
 	data := []byte(content)
 
@@ -165,7 +165,7 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	componentTestFileContent += "import { composeStories } from \"@storybook/testing-react\"\n"
 	componentTestFileContent += "import * as stories from \"./" + componentName + ".stories\"\n\n"
 	componentTestFileContent += "const { DefaultExample } = composeStories(stories)\n\n"
-	componentTestFileContent += "test(\"renders AnimContainer\", () => {\n"
+	componentTestFileContent += "test(\"renders " + componentName + "\", () => {\n"
 	componentTestFileContent += "  render(<DefaultExample />)\n"
 	componentTestFileContent += "  screen.getByTestId(\"\")\n"
 	componentTestFileContent += "})\n"
