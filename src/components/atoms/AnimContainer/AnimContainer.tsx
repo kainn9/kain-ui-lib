@@ -9,7 +9,8 @@ const anims = {
   revealFromRight: "reveal-from-right"
 }
 
-export interface AnimContainerProps {
+interface AnimContainerProps {
+  className?: string
   anim: keyof typeof anims
   children: ReactElement
   delay?: number
@@ -18,6 +19,7 @@ export interface AnimContainerProps {
 }
 
 const AnimContainer: FC<AnimContainerProps> = ({
+  className,
   anim,
   children,
   delay,
@@ -36,7 +38,7 @@ const AnimContainer: FC<AnimContainerProps> = ({
 
   return (
     <div
-      className={"anim-container " + animPrefixClass + animClass}
+      className={`anim-container ${animPrefixClass}${animClass} ${className ?? ""}`}
       data-testid="anim-container"
       style={style}
     >
@@ -47,4 +49,4 @@ const AnimContainer: FC<AnimContainerProps> = ({
 
 const wrappedAnimContainer = uiWrapper(AnimContainer)
 
-export { wrappedAnimContainer as AnimContainer }
+export { wrappedAnimContainer as AnimContainer, type AnimContainerProps }

@@ -5,6 +5,10 @@ import { AnimContainer, BaseLoader } from "../../atoms"
 import { type loaderKey } from "../../atoms/BaseLoader/loaders/types"
 import { GlowText } from "../GlowText"
 
+export interface PageLoaderProps {
+  className?: string
+}
+
 const pickRandomLoader = (): loaderKey => {
   // using array as map(since array has numeric keys anwyay) lol
 
@@ -17,15 +21,15 @@ const pickRandomLoader = (): loaderKey => {
   return options[key] as loaderKey
 }
 
-const PageLoader: FC = () => {
+const PageLoader: FC<PageLoaderProps> = ({ className }) => {
   return (
-    <section className="loader-section">
+    <section className={`loader-section ${className ?? ""}`}>
       <div>
         <BaseLoader loaderKey={pickRandomLoader()} />
         <div id="page__loader-text-container">
           <AnimContainer
             anim={"revealFromTop"}
-            delay={1000}
+            delay={500}
             freezeAtFinalFrame
             customStyle={{
               opacity: "0"
@@ -33,7 +37,7 @@ const PageLoader: FC = () => {
           >
             <GlowText
               headingLevel={2}
-              themeGlow="pinkPul"
+              themeGlow="pink"
               font={"georgia"}
               size="lg"
             >
@@ -43,7 +47,7 @@ const PageLoader: FC = () => {
 
           <AnimContainer
             anim={"revealFromLeft"}
-            delay={3000}
+            delay={1500}
             freezeAtFinalFrame
             customStyle={{
               opacity: "0"
@@ -51,7 +55,7 @@ const PageLoader: FC = () => {
           >
             <GlowText
               headingLevel={2}
-              themeGlow="pinkPul"
+              themeGlow="pink"
               font={"georgia"}
               size="xl"
             >

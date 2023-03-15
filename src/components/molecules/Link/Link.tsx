@@ -4,7 +4,8 @@ import { GlowText, type GlowTextProps } from "../"
 import { Text } from "../../atoms"
 import "./link.scss"
 
-export interface LinkProps extends Omit<GlowTextProps, "children"> {
+interface LinkProps extends Omit<GlowTextProps, "children"> {
+  className?: string
   children?: ReactElement | string
   childrenBeforeContent?: boolean
   content: string
@@ -15,6 +16,7 @@ export interface LinkProps extends Omit<GlowTextProps, "children"> {
 }
 
 const Link: FC<LinkProps> = ({
+  className,
   children,
   childrenBeforeContent,
   content,
@@ -44,7 +46,7 @@ const Link: FC<LinkProps> = ({
   return (
     <div
       style={customStyles}
-      className="kain-ui-link"
+      className={`kain-ui-link ${className ?? ""}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
@@ -69,4 +71,4 @@ const Link: FC<LinkProps> = ({
 
 const wrappedLink = uiWrapper(Link)
 
-export { wrappedLink as Link }
+export { wrappedLink as Link, type LinkProps }

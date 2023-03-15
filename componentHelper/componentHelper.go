@@ -4,11 +4,13 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"regexp"
 	"strings"
 
 	"github.com/manifoldco/promptui"
 )
 
+// AVERT YE EYES THIS WHOLE THING IS GROSSSSSSSS!
 func main() {
 	log.Println("Component Helper!")
 
@@ -109,10 +111,13 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	componentContent := "import { type FC } from \"react\"\n"
 	componentContent += "import { uiWrapper } from \"../../../hoc/uiWrapper\"\n"
 	componentContent += "import \"./" + strings.ToLower(componentName[:1]) + componentName[1:] + ".scss\"\n\n"
-	componentContent += "const " + componentName + ": FC = () => {\n"
-	componentContent += "  return <h2>Hello World!</h2>\n}\n\n"
+	componentContent += "interface " + componentName + "Props " + "{\n"
+	componentContent += "  className?: string\n"
+	componentContent += "}\n\n"
+	componentContent += "const " + componentName + ": FC<" + componentName + "Props" + "> = ({ className }) => {\n"
+	componentContent += "  return <div className={`${className ?? \"\"}`} data-testid=\"" + toKebab(componentName) + "\">Hello World!</div>\n}\n\n"
 	componentContent += "const wrapped" + componentName + " = uiWrapper(" + componentName + ")\n\n"
-	componentContent += "export { wrapped" + componentName + " as " + componentName + " }\n"
+	componentContent += "export { wrapped" + componentName + " as " + componentName + ", type " + componentName + "Props" + " }\n"
 
 	componentWriter := bufio.NewWriter(componentFile)
 	_, err = componentWriter.WriteString(componentContent)
@@ -167,7 +172,7 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	componentTestFileContent += "const { DefaultExample } = composeStories(stories)\n\n"
 	componentTestFileContent += "test(\"renders " + componentName + "\", () => {\n"
 	componentTestFileContent += "  render(<DefaultExample />)\n"
-	componentTestFileContent += "  screen.getByTestId(\"\")\n"
+	componentTestFileContent += "  screen.getByTestId(\"" + toKebab(componentName) + "\")\n"
 	componentTestFileContent += "})\n"
 
 	componentTestFileWriter := bufio.NewWriter(componentTestFile)
@@ -177,4 +182,13 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	}
 	componentTestFileWriter.Flush()
 
+}
+
+var matchFirstCap = regexp.MustCompile("(.)([A-Z][a-z]+)")
+var matchAllCap = regexp.MustCompile("([a-z0-9])([A-Z])")
+
+func toKebab(str string) string {
+	snake := matchFirstCap.ReplaceAllString(str, "${1}-${2}")
+	snake = matchAllCap.ReplaceAllString(snake, "${1}-${2}")
+	return strings.ToLower(snake)
 }

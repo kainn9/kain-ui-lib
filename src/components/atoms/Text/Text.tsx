@@ -2,8 +2,10 @@ import { type FC } from "react"
 import { uiWrapper } from "../../../hoc/uiWrapper"
 import { getFromScscModule } from "../../../util/scssModuleHelper"
 import { colors, type colorName } from "../../../scssVars/colors"
+import "./text.scss"
 
 interface TextProps {
+  className?: string
   themeColor?: colorName
   color?: string
   font: keyof typeof fonts
@@ -38,7 +40,7 @@ const sizes = {
   traeYoungNotValidInDyckman: 150
 }
 
-const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, customStyles, children }) => {
+const Text: FC<TextProps> = ({ className, themeColor, color, font, size, headingLevel, customStyles, children }) => {
   const selectedThemeColor = getFromScscModule(colors, themeColor as string)
 
   const Tag = headingLevel !== undefined && headingLevel !== null && headingLevel > 0 && headingLevel < 4
@@ -53,7 +55,7 @@ const Text: FC<TextProps> = ({ themeColor, color, font, size, headingLevel, cust
 
   return (
     <Tag
-      className="kain-ui-text"
+      className={`kain-ui-text ${className ?? ""}`}
       style={{ ...style, ...customStyles }}
       data-testid="kain-ui-text"
     >

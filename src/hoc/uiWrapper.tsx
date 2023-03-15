@@ -2,18 +2,13 @@ import { type ComponentType } from "react"
 
 const wrapperPrefix = "kain-ui-lib"
 
-/*
-* Note: If the child component needs height: 100%
-* this HOC will break it. The class name should be applied
-* to the highest level element of the component instead.
-*/
 export function uiWrapper<T extends ComponentType<any>> (Component: T) {
   // eslint-disable-next-line react/display-name
   return (props: React.ComponentProps<T>) => {
+    const classes = props.className !== undefined && props.className !== null ? (props.className as string) + " " + wrapperPrefix : wrapperPrefix
+    const newProps: React.ComponentProps<T> = { ...props, ...{ className: classes } }
     return (
-      <div className={wrapperPrefix}>
-        <Component {...props} />
-      </div>
+        <Component {...newProps} />
     )
   }
 }

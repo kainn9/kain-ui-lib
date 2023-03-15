@@ -1,7 +1,9 @@
 import { type ReactElement, type FC } from "react"
 import "./simpleNav.scss"
+import { uiWrapper } from "../../../hoc/uiWrapper"
 
-export interface NavProps {
+interface NavProps {
+  className?: string
   padding?: number
   gap: number
   direction: "row" | "column"
@@ -15,6 +17,7 @@ export interface NavProps {
 }
 
 const SimpleNav: FC<NavProps> = ({
+  className,
   links,
   gap,
   direction,
@@ -38,7 +41,7 @@ const SimpleNav: FC<NavProps> = ({
 
   return (
     <div
-      className="kain-ui-lib kain-ui-s-nav"
+      className={`kain-ui-s-nav ${className ?? ""}`}
       // as React.CSSProperties handles type bug around flex-direction
       // see: https://github.com/cssinjs/jss/issues/1344#issuecomment-734402215
       style={{ ...style as React.CSSProperties, ...customStyle }}
@@ -49,10 +52,6 @@ const SimpleNav: FC<NavProps> = ({
   )
 }
 
-/*
-* NOTE: not using HOC and
-* applying scoping className
-* directly as we want width
-* 100%
-*/
-export { SimpleNav }
+const WrappedSimpleNav = uiWrapper(SimpleNav)
+
+export { WrappedSimpleNav as SimpleNav, type NavProps }

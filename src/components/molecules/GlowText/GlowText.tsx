@@ -23,7 +23,7 @@ const themeGlowOpts = {
   greenPul: "green-pul-theme-glow"
 }
 
-const GlowText: FC<GlowTextProps> = ({ themeGlow, glowColor, color, themeColor, font, size, headingLevel, children }) => {
+const GlowText: FC<GlowTextProps> = ({ className, themeGlow, glowColor, color, themeColor, font, size, headingLevel, children }) => {
   const isThemeGlowSelected = (): boolean => {
     return themeGlow !== undefined && themeColor !== null && themeGlow.length > 0
   }
@@ -36,7 +36,7 @@ const GlowText: FC<GlowTextProps> = ({ themeGlow, glowColor, color, themeColor, 
   return (
     <div
       data-testid="glow-text"
-      className={`glow-text ${isThemeGlowSelected() ? themeGlowOpts[themeGlow as themeGlowKeys] : ""}`} style={style}
+      className={`glow-text ${isThemeGlowSelected() ? themeGlowOpts[themeGlow as themeGlowKeys] : ""} ${className ?? ""}`} style={style}
     >
       <Text
         font={font}
