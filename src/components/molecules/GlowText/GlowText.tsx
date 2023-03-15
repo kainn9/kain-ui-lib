@@ -2,7 +2,7 @@ import { type FC } from "react"
 import { uiWrapper } from "../../../hoc/uiWrapper"
 import { Text, type TextProps } from "../../atoms"
 import { getFromScscModule } from "../../../util/scssModuleHelper"
-import { colors } from "../../../scssVars/colors"
+import { colors } from "../../../styles/scssVars/colors/index"
 import "./glowText.scss"
 
 type themeGlowKeys = keyof typeof themeGlowOpts

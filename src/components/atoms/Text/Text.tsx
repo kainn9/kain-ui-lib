@@ -1,7 +1,7 @@
 import { type FC } from "react"
 import { uiWrapper } from "../../../hoc/uiWrapper"
 import { getFromScscModule } from "../../../util/scssModuleHelper"
-import { colors, type colorName } from "../../../scssVars/colors"
+import { colors, type colorName } from "../../../styles/scssVars/colors"
 import "./text.scss"
 
 interface TextProps {

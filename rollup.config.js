@@ -26,7 +26,7 @@ export default [
     plugins: [
       copy({
         targets: [
-          { src: "src/scssVars/colors", dest: "dist/scssVars", flatten: false }
+          { src: "src/styles/scssVars/colors", dest: "dist/scssVars", flatten: false }
         ]
       }),
       sass({

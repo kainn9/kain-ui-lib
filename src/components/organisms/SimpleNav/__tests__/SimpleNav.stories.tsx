@@ -4,7 +4,7 @@ import { SimpleNav } from ".."
 import { Link } from "../../../molecules"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBriefcase, faLaptopCode, faUser } from "@fortawesome/free-solid-svg-icons"
-import colors from "../../../../scssVars/colors/colors.module.scss"
+import colors from "../../../../styles/scssVars/colors/colors.module.scss"
 import { AnimContainer } from "../../../atoms"
 
 const Default: ComponentMeta<typeof SimpleNav> = {

@@ -1,7 +1,7 @@
 import { type ComponentStory, type ComponentMeta } from "@storybook/react"
 import { SimpleCard } from ".."
 import { Text } from "../../../atoms"
-import colors from "../../../../scssVars/colors/colors.module.scss"
+import colors from "../../../../styles/scssVars/colors/colors.module.scss"
 
 const Default: ComponentMeta<typeof SimpleCard> = {
   title: "SimpleCard",

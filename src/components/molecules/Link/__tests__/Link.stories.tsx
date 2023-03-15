@@ -2,7 +2,7 @@ import { type ComponentStory, type ComponentMeta } from "@storybook/react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons"
 import { Link } from ".."
-import colors from "../../../../scssVars/colors/colors.module.scss"
+import colors from "../../../../styles/scssVars/colors/colors.module.scss"
 
 const Default: ComponentMeta<typeof Link> = {
   title: "Link",

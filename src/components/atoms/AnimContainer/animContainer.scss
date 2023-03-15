@@ -1,3 +1,6 @@
+$prefix: "kain-ui-lib";
+
+
 .anim-container__reveal-from-left {
   animation-duration: 2s;
   animation-name: reveal-from-left;
@@ -9,11 +12,12 @@
   
 }
 
-
-.anim-container__reveal-from-top {
-  animation-duration: 2s;
-  animation-name: reveal-from-top;
-
+.#{$prefix} {
+  &.anim-container__reveal-from-top {
+    animation-duration: 2s;
+    animation-name: reveal-from-top;
+  
+  }
 }
 
 
