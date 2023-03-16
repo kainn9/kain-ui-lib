@@ -1,0 +1,14 @@
+@import "../../../styles/prefixes/prefixes.module.scss";
+
+.#{$prefix} {
+  &.link {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    cursor: pointer;
+  
+    &p {
+      margin: auto;
+    }
+  }
+}

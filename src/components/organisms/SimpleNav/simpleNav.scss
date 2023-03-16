@@ -1,4 +1,10 @@
-.kain-ui-s-nav {
-  display: flex;
-  width: 100%;
+@import "../../../styles/prefixes/prefixes.module.scss";
+
+.#{$prefix} {
+  &.s-nav,
+  &.s-nav__inner {
+    display: flex;
+    box-sizing: border-box;
+    z-index: 2;
+  }
 }

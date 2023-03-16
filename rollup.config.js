@@ -26,7 +26,19 @@ export default [
     plugins: [
       copy({
         targets: [
-          { src: "src/styles/scssVars/colors", dest: "dist/scssVars", flatten: false }
+          { src: "src/styles/scssVars/colors", dest: "dist/scssVars", flatten: false },
+
+          /*
+          * Note:
+          * Not sure if these are needed, allthough it does fix some broken imports
+          * in the dist/build. That said, it's tbd if those borked imports even mattered
+          * in the first place...this likely isn't the best way to handle that situation anwyay,
+          * but leaving for now. ¯\ (ツ) /¯
+          */
+          { src: "src/styles/scssVars/colors/colors.module.scss", dest: "dist/cjs/styles/scssVars/colors/" },
+          { src: "src/styles/scssVars/colors/colors.module.scss", dest: "dist/esm/styles/scssVars/colors/" },
+          { src: "src/styles/prefixes/prefixes.module.scss", dest: "dist/cjs/styles/prefixes/", flatten: false },
+          { src: "src/styles/prefixes/prefixes.module.scss", dest: "dist/esm/styles/prefixes/", flatten: false }
         ]
       }),
       sass({

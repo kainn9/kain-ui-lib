@@ -1,15 +1,16 @@
-import { type ReactElement, type FC } from "react"
+import { type ReactElement, type FC, type CSSProperties } from "react"
+import { uiWrapper, kulCx, nullFalseOrUndefined } from "../../../util"
 import "./simpleCard.scss"
-import { uiWrapper } from "../../../hoc/uiWrapper"
 
 interface SimpleCardProps {
   className?: string
   color: string
   height?: number
+  hFit?: boolean
   width?: number
   children: ReactElement
   padding: number
-  customStyles: Record<string, string>
+  customStyles?: CSSProperties
 }
 
 const SimpleCard: FC<SimpleCardProps> = ({
@@ -19,18 +20,23 @@ const SimpleCard: FC<SimpleCardProps> = ({
   width,
   children,
   padding,
-  customStyles
+  customStyles,
+  hFit
 }) => {
   const style = {
     backgroundColor: color,
-    height: height !== null && height !== undefined ? `${height}px` : "100%",
-    width: width !== null && width !== undefined ? `${width}px` : "100%",
-    padding: `${padding}px`
+    /* eslint-disable @typescript-eslint/no-non-null-assertion */
+    height: nullFalseOrUndefined(height) ? "100%" : height!,
+    width: nullFalseOrUndefined(width) ? "100%" : width!,
+    /* eslint-enable @typescript-eslint/no-non-null-assertion */
+    padding
   }
+
+  if (!nullFalseOrUndefined(hFit)) style.height = "fit-content"
 
   return (
     <div
-      className={`simple-card ${className ?? ""}`}
+      className={kulCx("simple-card", className)}
       style={{ ...style, ...customStyles }}
       data-testid="simple-card"
     >

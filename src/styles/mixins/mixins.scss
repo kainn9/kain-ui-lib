@@ -1,7 +1,0 @@
-$prefix: ".kain-ui-lib";
-
-@mixin p($selector) {
-  #{ $prefix } #{ $selector } {
-    @content
-  }
-}

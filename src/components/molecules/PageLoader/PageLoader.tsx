@@ -1,5 +1,5 @@
 import { type FC } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
+import { kulCx, uiWrapper } from "../../../util"
 import "./pageLoader.scss"
 import { AnimContainer, BaseLoader } from "../../atoms"
 import { type loaderKey } from "../../atoms/BaseLoader/loaders/types"
@@ -23,10 +23,12 @@ const pickRandomLoader = (): loaderKey => {
 
 const PageLoader: FC<PageLoaderProps> = ({ className }) => {
   return (
-    <section className={`loader-section ${className ?? ""}`}>
+    <section
+      className={kulCx("loader-section", className)}
+    >
       <div>
         <BaseLoader loaderKey={pickRandomLoader()} />
-        <div id="page__loader-text-container">
+        <div className={kulCx("loader-section__text-container", className)}>
           <AnimContainer
             anim={"revealFromTop"}
             delay={500}

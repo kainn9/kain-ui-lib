@@ -1,0 +1,29 @@
+@import "../../../styles/prefixes/prefixes.module.scss";
+@import "../../../styles/scssVars/colors/colors.module.scss";
+
+$transition: 1.5s ease;
+
+.#{$prefix} {
+
+  &.image-link-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &.image-link-image {
+    transition: $transition;
+  }
+
+  &.image-link-icon {
+    display: flex;
+    flex-direction: column;
+    transition: $transition;
+    position: absolute;
+    z-index: 2;
+    filter: brightness(2);
+    opacity: 0;
+  }
+}

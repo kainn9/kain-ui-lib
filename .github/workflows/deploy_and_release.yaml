@@ -36,6 +36,9 @@ jobs:
       - name: Deploy Storybook to S3 bucket
         run: aws s3 sync ./storybook-static/ s3://${{ vars.S3_BUCKET }} --delete
 
+      - name: Invalidate CF cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ vars.DISTRIBUTION_ID }} --paths "/*"
+
   release:
     needs: deploy
     name: Publish Package / GitHub release

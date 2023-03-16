@@ -1,0 +1,20 @@
+@import "../../../styles/prefixes/prefixes.module.scss";
+
+.#{$prefix} {
+  &.youtube-player {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    width: 100%;
+  }
+
+  &.youtube-player iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 0px;
+  }
+}

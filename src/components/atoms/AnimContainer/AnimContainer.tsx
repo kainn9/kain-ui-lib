@@ -1,5 +1,5 @@
-import { type FC, type ReactElement } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
+import { type CSSProperties, type FC, type ReactElement } from "react"
+import { nullFalseOrUndefined, uiWrapper, kulCx } from "../../../util"
 import "./animContainer.scss"
 
 const anims = {
@@ -15,7 +15,7 @@ interface AnimContainerProps {
   children: ReactElement
   delay?: number
   freezeAtFinalFrame?: boolean
-  customStyle?: Record<string, string>
+  customStyle?: CSSProperties
 }
 
 const AnimContainer: FC<AnimContainerProps> = ({
@@ -30,15 +30,16 @@ const AnimContainer: FC<AnimContainerProps> = ({
   const animPrefixClass = "anim-container__"
 
   let style = {
-    animationDelay: delay !== undefined && delay != null ? `${delay}ms` : "0s",
-    animationFillMode: (freezeAtFinalFrame ?? false) ? "forwards" : ""
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    animationDelay: nullFalseOrUndefined(delay) ? "0s" : `${delay!}ms`,
+    animationFillMode: nullFalseOrUndefined(freezeAtFinalFrame) ? "" : "forwards"
   }
 
   style = { ...customStyle, ...style }
 
   return (
     <div
-      className={`anim-container ${animPrefixClass}${animClass} ${className ?? ""}`}
+      className={kulCx(`anim-container ${animPrefixClass}${animClass}`, className)}
       data-testid="anim-container"
       style={style}
     >

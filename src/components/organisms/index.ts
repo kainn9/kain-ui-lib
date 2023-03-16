@@ -1,2 +1,2 @@
 export * from "./SimpleNav"
-export * from "./TwoPanelPhotoContentZone"
+export * from "./GithubPhotoAndTextContentZone"

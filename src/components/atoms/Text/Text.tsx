@@ -1,6 +1,5 @@
-import { type FC } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
-import { getFromScscModule } from "../../../util/scssModuleHelper"
+import { type CSSProperties, type FC } from "react"
+import { nullFalseOrUndefined, getFromScscModule, kulCx, uiWrapper } from "../../../util"
 import { colors, type colorName } from "../../../styles/scssVars/colors"
 import "./text.scss"
 
@@ -10,6 +9,7 @@ interface TextProps {
   color?: string
   font: keyof typeof fonts
   size?: keyof typeof sizes
+  inline?: boolean
   /**
    * children prop
    * (this comment is required for the storybook children option to render ¯\ (ツ) /¯)
@@ -17,7 +17,7 @@ interface TextProps {
    */
   children: string
   headingLevel?: number
-  customStyles?: Record<string, string>
+  customStyles?: CSSProperties
 }
 
 const fonts = {
@@ -40,27 +40,38 @@ const sizes = {
   traeYoungNotValidInDyckman: 150
 }
 
-const Text: FC<TextProps> = ({ className, themeColor, color, font, size, headingLevel, customStyles, children }) => {
+const Text: FC<TextProps> = ({
+  className,
+  themeColor,
+  color,
+  font,
+  size,
+  headingLevel,
+  customStyles,
+  inline,
+  children
+}) => {
   const selectedThemeColor = getFromScscModule(colors, themeColor as string)
-
-  const Tag = headingLevel !== undefined && headingLevel !== null && headingLevel > 0 && headingLevel < 4
-    ? `h${headingLevel}` as keyof JSX.IntrinsicElements
+  /* eslint-disable @typescript-eslint/no-non-null-assertion */
+  const Tag = !nullFalseOrUndefined(headingLevel) && headingLevel! > 0 && headingLevel! < 4
+    ? `h${headingLevel!}` as keyof JSX.IntrinsicElements
     : "p" as keyof JSX.IntrinsicElements
-
+  /* eslint-disable @typescript-eslint/no-non-null-assertion */
   const style = {
     color: selectedThemeColor ?? color,
     fontFamily: fonts[font],
-    fontSize: size !== undefined && size !== null ? (`clamp(14px, ${sizes[size ?? "sm"]}px, 10vw)`) : "14px"
+    fontSize: nullFalseOrUndefined(size) ? "14px" : (`clamp(14px, ${sizes[size ?? "sm"]}px, 10vw)`),
+    display: nullFalseOrUndefined(inline) ? "block" : "inline"
   }
 
   return (
     <Tag
-      className={`kain-ui-text ${className ?? ""}`}
+      className={kulCx("text", className)}
       style={{ ...style, ...customStyles }}
-      data-testid="kain-ui-text"
+      data-testid="text"
     >
       {
-        children !== undefined && children !== null && children.length > 0
+        !nullFalseOrUndefined(children) && children.length > 0
           ? children
           : "Hey no text was passed, so heres some placeholder text!"
       }

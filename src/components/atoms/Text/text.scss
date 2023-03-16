@@ -1,3 +1,7 @@
-.kain-ui-text {
-  margin: 0px;
+@import "../../../styles/prefixes/prefixes.module.scss";
+
+.#{$prefix} {
+  &.text {
+    margin: 0px;
+  }
 }

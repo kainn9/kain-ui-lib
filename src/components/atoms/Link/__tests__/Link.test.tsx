@@ -10,7 +10,7 @@ test("Link onClick is invoked from props", () => {
 
   render(<DefaultExample onClick={onClickMock} />)
 
-  const link = screen.getByTestId("kain-ui-link")
+  const link = screen.getByTestId("link")
 
   fireEvent.click(link)
 

@@ -1,18 +1,13 @@
-
-// .yt-lite {
-//   height: inherit;
-//   width: inherit;
-// }
-// <LiteYouTubeEmbed
-// id="gHzsRPmCaIE"
-// title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
-// />
+@import "../../../styles/prefixes/prefixes.module.scss";
 
 $shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 $border-radius: 3px;
 
-.simple-card {
-  box-shadow: $shadow;
-  border-radius: $border-radius;
+.#{$prefix} {
+  &.simple-card {
+    box-shadow: $shadow;
+    border-radius: $border-radius;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
 }
-

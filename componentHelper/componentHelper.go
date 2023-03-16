@@ -101,6 +101,19 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	}
 	defer scssFile.Close()
 
+	scssWriter := bufio.NewWriter(scssFile)
+	scssContent := "@import \"../../../styles/prefixes/prefixes.module.scss\";\n\n"
+	scssContent += ".#{$prefix} {\n"
+	scssContent += "  &." + toKebab(componentName) + " {\n"
+	scssContent += "  }\n"
+	scssContent += "}\n"
+
+	_, err = scssWriter.WriteString(scssContent)
+	if err != nil {
+		log.Fatalf("Something went wrong: %v\n", err)
+	}
+	scssWriter.Flush()
+
 	indexWriter := bufio.NewWriter(indexFile)
 	_, err = indexWriter.WriteString("export * from \"./" + componentName + "\"\n")
 	if err != nil {
@@ -109,13 +122,13 @@ func createComponentFolderAndRootFiles(filePath string, componentFolder string, 
 	indexWriter.Flush()
 
 	componentContent := "import { type FC } from \"react\"\n"
-	componentContent += "import { uiWrapper } from \"../../../hoc/uiWrapper\"\n"
+	componentContent += "import { uiWrapper, kulCx } from \"../../../util\"\n"
 	componentContent += "import \"./" + strings.ToLower(componentName[:1]) + componentName[1:] + ".scss\"\n\n"
 	componentContent += "interface " + componentName + "Props " + "{\n"
 	componentContent += "  className?: string\n"
 	componentContent += "}\n\n"
 	componentContent += "const " + componentName + ": FC<" + componentName + "Props" + "> = ({ className }) => {\n"
-	componentContent += "  return <div className={`${className ?? \"\"}`} data-testid=\"" + toKebab(componentName) + "\">Hello World!</div>\n}\n\n"
+	componentContent += "  return (\n   <div\n     className={`${kulCx(" + "\"" + toKebab(componentName) + "\"" + ", className)}`}\n     data-testid=\"" + toKebab(componentName) + "\"\n   >\n     Hello World!\n   </div>\n  )\n}\n\n"
 	componentContent += "const wrapped" + componentName + " = uiWrapper(" + componentName + ")\n\n"
 	componentContent += "export { wrapped" + componentName + " as " + componentName + ", type " + componentName + "Props" + " }\n"
 

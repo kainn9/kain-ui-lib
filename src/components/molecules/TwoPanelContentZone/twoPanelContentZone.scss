@@ -1,19 +1,16 @@
-.content-zone__card-zone {
-  display: grid;
-}
+@import "../../../styles/prefixes/prefixes.module.scss";
 
-
-.content-zone__zone-one {
-  grid-column-start: 1;
-  grid-row-start: 1;
-  grid-column-end: 3;
-  z-index: 1;
-}
-
-.content-zone__zone-two {
-
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-column-end: 3;
-  z-index: 2;
+.#{$prefix} {
+  &.content-zone__card-zone {
+    display: grid;
+  }
+  
+  
+  &.content-zone__zone-one {
+    position: relative;
+  }
+  
+  &.content-zone__zone-two {
+    position: relative;
+  }
 }

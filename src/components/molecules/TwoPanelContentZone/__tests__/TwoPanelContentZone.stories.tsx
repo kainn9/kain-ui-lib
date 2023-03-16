@@ -12,8 +12,8 @@ export const DefaultExample = Template.bind({})
 DefaultExample.args = {
   zoneTwoHeight: 200,
   zoneTwoWidth: 300,
-  zoneTwoOffsetX: 50,
-  zoneTwoOffsetY: 90,
+  zoneTwoOffsetX: 500,
+  zoneTwoOffsetY: 300,
   zoneOneContent: <div>Yohoohohoho one!</div>,
 
   zoneOneHeight: 400,

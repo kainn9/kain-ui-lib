@@ -2,65 +2,83 @@
 // just ripping from here:
 // https://css-tricks.com/how-to-create-neon-text-with-css/
 
-.purp-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #bc13fe,
-  0 0 82px #bc13fe,
-  0 0 92px #bc13fe,
-  0 0 102px #bc13fe,
-  0 0 151px #bc13fe;
-}
 
-.purp-pul-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #bc13fe,
-  0 0 82px #bc13fe,
-  0 0 92px #bc13fe,
-  0 0 102px #bc13fe,
-  0 0 151px #bc13fe;
+@import "../../../styles/prefixes/prefixes.module.scss";
 
-  animation: pulsate-purp 1.5s infinite alternate;  
-}
-
-.blue-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #5271ff,
-  0 0 82px #5271ff,
-  0 0 92px #5271ff,
-  0 0 102px #5271ff,
-  0 0 151px #5271ff;
-}
-
-.blue-pul-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #5271ff,
-  0 0 82px #5271ff,
-  0 0 92px #5271ff,
-  0 0 102px #5271ff,
-  0 0 151px #5271ff;
-
-  animation: pulsate-blue 0.11s ease-in-out infinite alternate;    
-}
-
-.pink-theme-glow {
-  color: #fff;
-  text-shadow:
+.#{$prefix} {
+  &.purp-theme-glow {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #bc13fe,
+    0 0 82px #bc13fe,
+    0 0 92px #bc13fe,
+    0 0 102px #bc13fe,
+    0 0 151px #bc13fe;
+  }
+  
+  &.purp-pul-theme-glow {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #bc13fe,
+    0 0 82px #bc13fe,
+    0 0 92px #bc13fe,
+    0 0 102px #bc13fe,
+    0 0 151px #bc13fe;
+  
+    animation: pulsate-purp 1.5s infinite alternate;  
+  }
+  
+  &.blue-theme-glow {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #5271ff,
+    0 0 82px #5271ff,
+    0 0 92px #5271ff,
+    0 0 102px #5271ff,
+    0 0 151px #5271ff;
+  }
+  
+  &.blue-pul-theme-glow {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #5271ff,
+    0 0 82px #5271ff,
+    0 0 92px #5271ff,
+    0 0 102px #5271ff,
+    0 0 151px #5271ff;
+  
+    animation: pulsate-blue 0.11s ease-in-out infinite alternate;    
+  }
+  
+  &.pink-theme-glow {
+    color: #fff;
+    text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #f09,
+      0 0 82px #f09,
+      0 0 92px #f09,
+      0 0 102px #f09,
+      0 0 151px #f09;
+  
+  }
+  
+  &.pink-pul-theme-glow {
+    color: #fff;
+    text-shadow:
     0 0 7px #fff,
     0 0 10px #fff,
     0 0 21px #fff,
@@ -69,171 +87,157 @@
     0 0 92px #f09,
     0 0 102px #f09,
     0 0 151px #f09;
-
-}
-
-.pink-pul-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #f09,
-  0 0 82px #f09,
-  0 0 92px #f09,
-  0 0 102px #f09,
-  0 0 151px #f09;
-
-  animation: pulsate-pink 0.11s ease-in-out infinite alternate;  
-}
-
-.green-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #0fa,
-  0 0 82px #0fa,
-  0 0 92px #0fa,
-  0 0 102px #0fa,
-  0 0 151px #0fa;
-}
-
-.green-pul-theme-glow {
-  color: #fff;
-  text-shadow:
-  0 0 7px #fff,
-  0 0 10px #fff,
-  0 0 21px #fff,
-  0 0 42px #0fa,
-  0 0 82px #0fa,
-  0 0 92px #0fa,
-  0 0 102px #0fa,
-  0 0 151px #0fa;
-
-  animation: pulsate-green 1.5s infinite alternate;  
-}
-
-
-@keyframes pulsate-purp {
-    
-  100% {
-
-      text-shadow:
-      0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #bc13fe,
-      0 0 80px #bc13fe,
-      0 0 90px #bc13fe,
-      0 0 100px #bc13fe,
-      0 0 150px #bc13fe;
   
+    animation: pulsate-pink 0.11s ease-in-out infinite alternate;  
   }
   
-  0% {
-
+  &.green-theme-glow {
+    color: #fff;
     text-shadow:
-    0 0 2px #fff,
-    0 0 4px #fff,
-    0 0 6px #fff,
-    0 0 10px #bc13fe,
-    0 0 45px #bc13fe,
-    0 0 55px #bc13fe,
-    0 0 70px #bc13fe,
-    0 0 80px #bc13fe;
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
   }
-}
-
-@keyframes pulsate-blue {
+  
+  &.green-pul-theme-glow {
+    color: #fff;
+    text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+  
+    animation: pulsate-green 1.5s infinite alternate;  
+  }
+  
+  
+  @keyframes pulsate-purp {
+      
+    100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #bc13fe,
+        0 0 80px #bc13fe,
+        0 0 90px #bc13fe,
+        0 0 100px #bc13fe,
+        0 0 150px #bc13fe;
     
-  100% {
-
+    }
+    
+    0% {
+  
+      text-shadow:
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px #fff,
+      0 0 10px #bc13fe,
+      0 0 45px #bc13fe,
+      0 0 55px #bc13fe,
+      0 0 70px #bc13fe,
+      0 0 80px #bc13fe;
+    }
+  }
+  
+  @keyframes pulsate-blue {
+      
+    100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #5271ff,
+        0 0 80px #5271ff,
+        0 0 90px #5271ff,
+        0 0 100px #5271ff,
+        0 0 150px #5271ff;
+    
+    }
+    
+    0% {
+  
       text-shadow:
       0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #5271ff,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #5271ff,
+      0 0 73px #5271ff,
       0 0 80px #5271ff,
-      0 0 90px #5271ff,
-      0 0 100px #5271ff,
-      0 0 150px #5271ff;
-  
+      0 0 94px #5271ff,
+      0 0 140px #5271ff;
+    }
   }
   
-  0% {
-
-    text-shadow:
-    0 0 4px #fff,
-    0 0 10px #fff,
-    0 0 18px #fff,
-    0 0 38px #5271ff,
-    0 0 73px #5271ff,
-    0 0 80px #5271ff,
-    0 0 94px #5271ff,
-    0 0 140px #5271ff;
-  }
-}
-
-@keyframes pulsate-pink {
+  @keyframes pulsate-pink {
+      
+    100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #f09,
+        0 0 80px #f09,
+        0 0 90px #f09,
+        0 0 100px #f09,
+        0 0 150px #f09;
     
-  100% {
-
+    }
+    
+    0% {
+  
       text-shadow:
       0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #f09,
+      0 0 10px #fff,
+      0 0 18px #fff,
+      0 0 38px #f09,
+      0 0 73px #f09,
       0 0 80px #f09,
-      0 0 90px #f09,
-      0 0 100px #f09,
-      0 0 150px #f09;
-  
+      0 0 94px #f09,
+      0 0 140px #f09;
+    }
   }
   
-  0% {
-
-    text-shadow:
-    0 0 4px #fff,
-    0 0 10px #fff,
-    0 0 18px #fff,
-    0 0 38px #f09,
-    0 0 73px #f09,
-    0 0 80px #f09,
-    0 0 94px #f09,
-    0 0 140px #f09;
-  }
-}
-
-@keyframes pulsate-green {
+  @keyframes pulsate-green {
+      
+    100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
     
-  100% {
-
+    }
+    
+    0% {
+  
       text-shadow:
+      0 0 2px #fff,
       0 0 4px #fff,
-      0 0 11px #fff,
-      0 0 19px #fff,
-      0 0 40px #0fa,
-      0 0 80px #0fa,
-      0 0 90px #0fa,
-      0 0 100px #0fa,
-      0 0 150px #0fa;
+      0 0 6px #fff,
+      0 0 10px #0fa,
+      0 0 45px #0fa,
+      0 0 55px #0fa,
+      0 0 70px #0fa,
+      0 0 80px #0fa;
+    }
   
   }
-  
-  0% {
-
-    text-shadow:
-    0 0 2px #fff,
-    0 0 4px #fff,
-    0 0 6px #fff,
-    0 0 10px #0fa,
-    0 0 45px #0fa,
-    0 0 55px #0fa,
-    0 0 70px #0fa,
-    0 0 80px #0fa;
-  }
-
 }
-

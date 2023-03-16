@@ -1,30 +1,29 @@
-$prefix: "kain-ui-lib";
-
-
-.anim-container__reveal-from-left {
-  animation-duration: 2s;
-  animation-name: reveal-from-left;
-}
-
-.anim-container__reveal-from-right {
-  animation-duration: 2s;
-  animation-name: reveal-from-right;
-  
-}
+@import "../../../styles/prefixes/prefixes.module.scss";
 
 .#{$prefix} {
   &.anim-container__reveal-from-top {
     animation-duration: 2s;
     animation-name: reveal-from-top;
-  
   }
+
+  &.anim-container__reveal-from-left {
+    animation-duration: 2s;
+    animation-name: reveal-from-left;
+  }
+  
+  &.anim-container__reveal-from-right {
+    animation-duration: 2s;
+    animation-name: reveal-from-right;
+    
+  }
+
+  &.anim-container__reveal-from-bottom {
+    animation-duration: 2s;
+    animation-name: reveal-from-bottom;
+  }
+  
 }
 
-
-.anim-container__reveal-from-bottom {
-  animation-duration: 2s;
-  animation-name: reveal-from-bottom;
-}
 
 @keyframes reveal-from-top {
   0% {

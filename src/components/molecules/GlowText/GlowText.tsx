@@ -1,7 +1,6 @@
 import { type FC } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
+import { kulCx, uiWrapper, getFromScscModule, nullFalseOrUndefined } from "../../../util"
 import { Text, type TextProps } from "../../atoms"
-import { getFromScscModule } from "../../../util/scssModuleHelper"
 import { colors } from "../../../styles/scssVars/colors/index"
 import "./glowText.scss"
 
@@ -23,20 +22,33 @@ const themeGlowOpts = {
   greenPul: "green-pul-theme-glow"
 }
 
-const GlowText: FC<GlowTextProps> = ({ className, themeGlow, glowColor, color, themeColor, font, size, headingLevel, children }) => {
+const GlowText: FC<GlowTextProps> = ({
+  className,
+  themeGlow,
+  glowColor,
+  color,
+  themeColor,
+  font,
+  size,
+  headingLevel,
+  children
+}) => {
   const isThemeGlowSelected = (): boolean => {
-    return themeGlow !== undefined && themeColor !== null && themeGlow.length > 0
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return !nullFalseOrUndefined(themeGlow) && themeGlow!.length > 0
   }
 
   const style = {
     textShadow: !isThemeGlowSelected() ? `${glowColor ?? "yellow"} 4px 0 10px` : undefined
   }
+
   const selectedThemeColor = getFromScscModule(colors, themeColor as string)
 
   return (
     <div
       data-testid="glow-text"
-      className={`glow-text ${isThemeGlowSelected() ? themeGlowOpts[themeGlow as themeGlowKeys] : ""} ${className ?? ""}`} style={style}
+      className={kulCx(`glow-text ${isThemeGlowSelected() ? themeGlowOpts[themeGlow as themeGlowKeys] : ""}`, className)}
+      style={style}
     >
       <Text
         font={font}

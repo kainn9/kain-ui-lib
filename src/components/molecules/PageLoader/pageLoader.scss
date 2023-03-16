@@ -1,22 +1,29 @@
 @import "../../../styles/scssVars/colors/colors.module.scss";
+@import "../../../styles/prefixes/prefixes.module.scss";
 
-.loader-section {
-  height: 100vh;
-  // background-color:#240c76; Use this later(lighter shade)
-  background-color: $purple-darkest;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-
-  h2 {
-    font-weight: normal;
+.#{$prefix} {
+  &.loader-section {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: $purple-darkest;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  
+  
+    &h2 {
+      font-weight: normal;
+    }
+  
   }
 
-  #page__loader-text-container {
+  &.loader-section__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     margin-top: 90px;
   }
-  
 }

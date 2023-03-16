@@ -1,5 +1,5 @@
 import { type FC } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
+import { uiWrapper } from "../../../util"
 import { WaterDragon, FlameSword } from "./loaders"
 import { type baseLoaderProps, type unionProps } from "./loaders/types"
 

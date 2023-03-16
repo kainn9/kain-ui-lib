@@ -1,6 +1,6 @@
-import { type ReactElement, type FC, useState } from "react"
-import { uiWrapper } from "../../../hoc/uiWrapper"
-import { GlowText, type GlowTextProps } from "../"
+import { type ReactElement, type FC, useState, type CSSProperties } from "react"
+import { kulCx, uiWrapper } from "../../../util"
+import { GlowText, type GlowTextProps } from "../../../components"
 import { Text } from "../../atoms"
 import "./link.scss"
 
@@ -10,8 +10,8 @@ interface LinkProps extends Omit<GlowTextProps, "children"> {
   childrenBeforeContent?: boolean
   content: string
   useGlowText?: boolean
-  hoverStyles?: Record<string, string>
-  customStyles?: Record<string, string>
+  hoverStyles?: CSSProperties
+  customStyles?: CSSProperties
   onClick: () => void
 }
 
@@ -46,11 +46,11 @@ const Link: FC<LinkProps> = ({
   return (
     <div
       style={customStyles}
-      className={`kain-ui-link ${className ?? ""}`}
+      className={kulCx("link", className)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      data-testid="kain-ui-link"
+      data-testid="link"
     >
       {(childrenBeforeContent ?? false) ? children : null}
       <TextComponent
