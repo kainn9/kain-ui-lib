@@ -95,7 +95,8 @@ DefaultExample.args = {
     iconLink: <IconLink faIcon={faHamburger} color={"white"} size={"sm"} hoverColor={colors["retro-teal"]} onClick={() => { alert("Clicked!") }} />,
     justify: "right",
     translationOffsetX: 0,
-    translationOffsetY: -50
+    translationOffsetY: -50,
+    translationStart: 500
   }
 }
 

@@ -7,7 +7,7 @@ import "./iconLink.scss"
 interface IconLinkProps {
   className?: string
   faIcon: IconProp
-  color: string
+  color?: string
   size: SizeProp
   hoverColor: string
   onClick: () => void

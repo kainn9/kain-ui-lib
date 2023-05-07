@@ -37,6 +37,8 @@ interface TabContainerProps {
   contentHeight?: number
   fontSize?: number
   verticalOpts?: VerticalModeOptions
+  tabQpKey?: string
+  tabClickCb?: () => void
 }
 
 const Tab: FC<TabProps> = ({
@@ -94,12 +96,32 @@ const TabContainer: FC<TabContainerProps> = ({
   font,
   fontSize,
   contentPadding,
-  verticalOpts
+  verticalOpts,
+  tabQpKey,
+  tabClickCb
 }) => {
+  const queryParams = new URLSearchParams(window.location.search)
+  const tabFromQp = queryParams.get(tabQpKey ?? "")
+
   const isVertical = !nullFalseOrUndefined(verticalOpts)
   const { width: verticalWidth } = verticalOpts ?? {}
 
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(qpSafe(tabFromQp ?? "", tabHeaders.length))
+
+  const handleTabClick = (i: number): void => {
+    setActive(i)
+
+    if (!nullFalseOrUndefined(tabQpKey)) {
+      const queryParams = new URLSearchParams(window.location.search)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      queryParams.set(tabQpKey!, (i + 1).toString())
+
+      const newUrl = window.location.pathname + "?" + queryParams.toString()
+      window.history.pushState(null, "", newUrl)
+    }
+
+    tabClickCb?.()
+  }
 
   const style: CSSProperties = {
     height,
@@ -147,7 +169,7 @@ const TabContainer: FC<TabContainerProps> = ({
             id={i}
             active={active}
             highlight={tabActiveHighlight}
-            onClick={() => { setActive(i) }}
+            onClick={() => { handleTabClick(i) }}
             verticalOpts={verticalOpts}
            />
         )
@@ -165,6 +187,14 @@ const TabContainer: FC<TabContainerProps> = ({
   )
 }
 
+const qpSafe = (qp: string, max: number): number => {
+  const qpParsed = parseInt(qp, 10)
+  if ((!isNaN(qpParsed) && qpParsed <= max) && qpParsed > 0) {
+    return qpParsed - 1
+  } else {
+    return 0
+  }
+}
 const wrappedTabContainer = uiWrapper(TabContainer)
 
 export { wrappedTabContainer as TabContainer, type TabContainerProps, type VerticalModeOptions }

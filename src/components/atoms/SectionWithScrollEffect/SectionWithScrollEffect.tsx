@@ -23,7 +23,8 @@ const SectionWithScrollEffect: FC<SectionWithScrollEffectProps> = ({ className, 
     const observer = new IntersectionObserver(
       ([entry]) => {
         // update state based on whether the element is in view
-        setIsVisible(entry.isIntersecting)
+        // only once tho(dont re-hide when out of view)
+        if (entry.isIntersecting) setIsVisible(true)
       }, obsOpts
 
     )

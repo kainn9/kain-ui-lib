@@ -5,7 +5,7 @@ import { type ReactElement } from "react"
 
 const content = (inc: number): ReactElement[] => [
   <GithubPhotoAndTextContentZone increment={inc} key={0} zoneOneHeight={300} zoneOneWidth={400} zoneTwoHeight={170} zoneTwoWidth={300} zoneTwoOffsetX={285} zoneTwoOffsetY={240} />,
-  <div key={1} style={{ width: "80%", maxWidth: "1000px" }}><YoutubePlayer title={"Example"} embedId={"7AWOHqySSmU"} /></div>
+  <div key={1} style={{ width: "55%", maxWidth: "1000px" }}><YoutubePlayer title={"Example"} embedId={"7AWOHqySSmU"} /></div>
 ].reverse()
 
 const Default: ComponentMeta<typeof TabContainer> = {
@@ -19,7 +19,7 @@ export const DefaultExample = Template.bind({})
 DefaultExample.args = {
   className: "yahoo",
   bgColor: colors["purple-darkest"],
-  tabHeaders: ["TabOne", "TabTwo"],
+  tabHeaders: ["TabOne sasadasdsdsdasdasdasd", "TabTwo"],
   tabBgColor: colors["purple-darker"],
   tabfontColor: colors["white-pink"],
   tabActiveHighlight: colors["retro-teal"],

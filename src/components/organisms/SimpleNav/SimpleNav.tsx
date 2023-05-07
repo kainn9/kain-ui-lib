@@ -8,6 +8,7 @@ interface mobileSettings {
   justify: "left" | "right" | "center"
   translationOffsetX?: number
   translationOffsetY?: number
+  translationStart?: number
 }
 
 interface NavProps {
@@ -134,7 +135,7 @@ const SimpleNav: FC<NavProps> = ({
               }}
               customStyleOuter={{
                 transition: "all 0.7s ease",
-                transform: mobileMenuOn ? `translate(${0 - (mobileSettings?.translationOffsetX ?? 0)}px, ${0 - (mobileSettings?.translationOffsetY ?? 0)}px)` : "translate(400px, 0px)",
+                transform: mobileMenuOn ? `translate(${0 - (mobileSettings?.translationOffsetX ?? 0)}px, ${0 - (mobileSettings?.translationOffsetY ?? 0)}px)` : `translate(${mobileSettings?.translationStart ?? 400}px, 0px)`,
                 visibility: mobileMenuOn ? "visible" : "hidden",
                 position: "fixed",
                 right: "0"
