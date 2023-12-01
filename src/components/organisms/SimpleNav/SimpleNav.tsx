@@ -68,7 +68,8 @@ const SimpleNav: FC<NavProps> = ({
     height: nullFalseOrUndefined(height) ? "fit-content" : height!,
     width: nullFalseOrUndefined(width) ? "100%" : width!,
     /* eslint-enable @typescript-eslint/no-non-null-assertion */
-    position: "fixed"
+    position: "sticky",
+    top: "0px"
   }
   const style = {
     gap,
@@ -137,7 +138,7 @@ const SimpleNav: FC<NavProps> = ({
                 transition: "all 0.7s ease",
                 transform: mobileMenuOn ? `translate(${0 - (mobileSettings?.translationOffsetX ?? 0)}px, ${0 - (mobileSettings?.translationOffsetY ?? 0)}px)` : `translate(${mobileSettings?.translationStart ?? 400}px, 0px)`,
                 visibility: mobileMenuOn ? "visible" : "hidden",
-                position: "relative",
+                position: "fixed",
                 right: "0"
               }}
             />
