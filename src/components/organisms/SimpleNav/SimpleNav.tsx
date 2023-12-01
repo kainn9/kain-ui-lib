@@ -137,7 +137,7 @@ const SimpleNav: FC<NavProps> = ({
                 transition: "all 0.7s ease",
                 transform: mobileMenuOn ? `translate(${0 - (mobileSettings?.translationOffsetX ?? 0)}px, ${0 - (mobileSettings?.translationOffsetY ?? 0)}px)` : `translate(${mobileSettings?.translationStart ?? 400}px, 0px)`,
                 visibility: mobileMenuOn ? "visible" : "hidden",
-                position: "fixed",
+                position: "relative",
                 right: "0"
               }}
             />
