@@ -8,12 +8,13 @@ export const loaders = {
   flameSword: FlameSword
 }
 
-const BaseLoader: FC<baseLoaderProps> = (props) => {
-  const { loaderKey } = props
+const BaseLoader: FC<baseLoaderProps> = (loaderProps) => {
+  const { loaderKey } = loaderProps
+
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const Loader: FC<unionProps> = loaders[loaderKey]!
 
-  return <Loader {...props} />
+  return <Loader {...loaderProps} />
 }
 
 const wrappedBaseLoader = uiWrapper(BaseLoader)

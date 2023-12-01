@@ -1,3 +1,7 @@
+# Disclaimer
+Like many of my side projects, this UI library was primarily crafted for learning purposes. Although it found its place on my personal website/portfolio, I must confess some reservations about its implementation. In retrospect, my approach to scoping/leaky styles may have been a bit unconventional and excessive—possibly influenced by past challenges with tailwind's preflight styles that left a lasting impression. Additionally, the Golang templater I employed is admittedly lacks readability. However, despite these considerations, the library remains somewhat functional, and I appreciate the convenience of hosting a Storybook preview build via S3/CloudFront that deploys through GitHub Actions!
+
+
 # What is this?
 This is a React/Sass UI library that contains a collection of fun and random reusable components. The IAC (Terraform) included in the repository is used to stand up the S3/Cloudfront infrastructure that hosts the Storybook preview, while GitHub Actions workflows are responsible for deploying the library, both by deploying the build to AWS and releasing the package on GitHub.
 
